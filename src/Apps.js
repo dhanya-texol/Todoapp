@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import './App.css'
 
 
-function Todo({ todo, index, completeTodo, removeTodo }) {
+const Todo=({ todo, index, completeTodo, removeTodo })=> {
     return (<div
         style={{ textDecoration: todo.iscompleted ? 'line-through' : '' }}
         className="todo">
         {todo.text}
         <div>
             <button onClick={() => completeTodo(index)}>Complete</button>
-            <button onClick={removeTodo}>Delete</button>
+            <button onClick={()=>removeTodo(index)}>Delete</button>
         </div>
     </div>
     )
 }
-function Todoform({ addTodo }) {
+const Todoform=({ addTodo })=> {
     const [value, setValue] = useState('');
     const handleSubmit = e => {
         e.preventDefault();
@@ -34,7 +34,7 @@ function Todoform({ addTodo }) {
     )
 }
 
-function Apps() {
+const Apps=()=> {
     const [todos, setTodos] = useState([
         {
             text: 'learn about react',
@@ -63,10 +63,10 @@ function Apps() {
         setTodos(newTodos);
 
     }
-    const removeTodo = e => {
+    const removeTodo = index => {
         const newTodos = [...todos];
-         const {id}=e.target.parentElement;
-        newTodos.splice(id,1);
+         //const {id}=e.target.parentElement;
+        newTodos.splice(index,1);
         setTodos(newTodos);
 
     }
