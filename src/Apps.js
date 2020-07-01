@@ -9,7 +9,7 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
         {todo.text}
         <div>
             <button onClick={() => completeTodo(index)}>Complete</button>
-            <button onClick={() => removeTodo(index)}>Delete</button>
+            <button onClick={removeTodo}>Delete</button>
         </div>
     </div>
     )
@@ -63,10 +63,12 @@ function Apps() {
         setTodos(newTodos);
 
     }
-    const removeTodo = index => {
+    const removeTodo = e => {
         const newTodos = [...todos];
-        newTodos.splice(index);
+         const {id}=e.target.parentElement;
+        newTodos.splice(id,1);
         setTodos(newTodos);
+
     }
     return (
         <div className="App">

@@ -29,7 +29,7 @@ return todos})
 }
 //Delete Todos
 delTodos=(id)=>{
-axios.delete('https://jsonplaceholder.typicode.com/todos/${id}')
+axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
 .then(res=>this.setState({
 Todos:[...this.state.Todos.filter(todos =>todos.id!== id)]
 }))
